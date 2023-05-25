@@ -7,9 +7,9 @@
     "node": "18"
   },
   "scripts": {
-    "dev": "tsx src/*.ts",
+    "dev": "tsx src/server.ts",
     "build": "tsup src",
-    "start": "node dist/aula.html"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
