@@ -7,7 +7,7 @@
     "node": "18"
   },
   "scripts": {
-    "dev": "tsx src/server.ts",
+    "dev": "tsx src/*.ts",
     "build": "tsup src",
     "start": "node dist/aula.html"
   },
