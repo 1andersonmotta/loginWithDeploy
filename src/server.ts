@@ -1,20 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 import fastify from "fastify";
 import { z } from "zod"
-import { Login } from "./login";
+import path from "path";
 
 const app = fastify()
 
 const prisma = new PrismaClient()
 
 app.get('/users', async () => {
-    console.log('chamouuuu');
-    const html = new Login()
-    // const user = await prisma.user.findMany()
-    // console.log('user', user);
+    const user = await prisma.user.findMany()
 
-    //return { user }
-    return { html }
+    return { user }
 })
 
 app.post('/users', async (request, reply) => {
@@ -76,6 +72,8 @@ app.post('/users', async (request, reply) => {
 
     return reply.status(201).send()
 })
+
+const publicDir = path.join(__dirname, 'public');
 
 app.listen({
     host: '0.0.0.0',
