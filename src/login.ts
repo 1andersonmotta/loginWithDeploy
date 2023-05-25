@@ -1,19 +1,19 @@
 export class Login {
-    static logado = false;
-    static matlogado = null;
-    static nomelogado = null;
-    static acessologado = null;
-    static estilocss = null;
-    static callback_ok = null;
-    static callback_naook = null;
-    static config = {
+    static logado: boolean = false;
+    static matlogado: any = null;
+    static nomelogado: any = null;
+    static acessologado: any = null;
+    static estilocss: any = null;
+    static callback_ok: any = null;
+    static callback_naook: any = null;
+    static config: any = {
         cor: "048",
         img: "login.jfif"
     };
 
     static endpoint = "https://loginv1.cfbcursos.repl.co/";
 
-    static login = (callback_ok, callback_naook, config = null) => {
+    static login = (callback_ok: any, callback_naook: any, config = null) => {
         if (config != null) {
             this.config = config;
         }
@@ -116,8 +116,8 @@ export class Login {
     }
 
     static verificaLogin = () => {
-        const mat = document.querySelector("#f_username").value;
-        const pas = document.querySelector("#f_senha").value;
+        const mat = (document.querySelector("#f_username") as HTMLInputElement).value;
+        const pas = (document.querySelector("#f_senha") as HTMLInputElement).value;
 
         const endpoint = `https://loginv1.cfbcursos.repl.co/?matricula=${mat}&senha=${pas}`;
         fetch(endpoint)
@@ -142,9 +142,13 @@ export class Login {
 
     static fechar = () => {
         const fundoLogin = document.querySelector("#fundoLogin");
-        fundoLogin.remove();
+        if (fundoLogin) {
+            fundoLogin.remove();
+        }
         const id_estiloLogin = document.querySelector("#id_estiloLogin");
-        id_estiloLogin.remove();
+        if (id_estiloLogin) {
+            id_estiloLogin.remove()
+        };
     }
 }
 

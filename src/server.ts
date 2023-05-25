@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import fastify from "fastify";
 import { z } from "zod"
+import { Login } from "./login";
 
 const app = fastify()
 
@@ -8,11 +9,12 @@ const prisma = new PrismaClient()
 
 app.get('/users', async () => {
     console.log('chamouuuu');
+    const html = new Login()
+    // const user = await prisma.user.findMany()
+    // console.log('user', user);
 
-    const user = await prisma.user.findMany()
-    console.log('user', user);
-
-    return { user }
+    //return { user }
+    return { html }
 })
 
 app.post('/users', async (request, reply) => {

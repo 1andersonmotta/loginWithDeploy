@@ -1,19 +1,21 @@
 
 class Cxmsg {
-    static cor = "#888"
-    static destino = null;
-    static divmsg = null;
-    static tipo = null;
-    static comando_sn = null;
-    static textos = []
+    static cor: string = "#888"
+    static destino: HTMLElement | null = null;
+    static divmsg: HTMLElement | null = null;
+    static tipo: string | null = null;
+    static titulo: string | null = null;
+    static texto: string | null = null;
+    static comando_sn: (() => void) | null = null;
+    static textos: string[] = [];
 
-    static mostrar = (config, titulo, texto) => {
+    static mostrar(config: { cor: string, tipo: string, textos: string[], comando_sn: () => void }, titulo: string, texto: string): void {
         this.cor = config.cor
         this.tipo = config.tipo
         this.textos = config.textos
         this.comando_sn = () => { config.comando_sn() }
-        this.destino = document.body
-        this.titulo = titulo
+        this.destino = document.body;
+        this.titulo = titulo;
         this.texto = texto
         this.divmsg = document.createElement("div")
         const estilo_divmsg =
@@ -94,7 +96,7 @@ class Cxmsg {
             btn_ok.innerHTML = "OK"
             btn_ok.addEventListener("click", (evt) => {
                 this.ocultar()
-                this.comando_sn()
+                if (this.comando_sn) { this.comando_sn() }
             })
             rodapeCxmsg.appendChild(btn_ok)
         } else if (this.tipo == "sn") {
@@ -102,7 +104,7 @@ class Cxmsg {
             btn_sim.setAttribute("style", estilo_botaoCxmsg)
             btn_sim.innerHTML = this.textos[0]
             btn_sim.addEventListener("click", (evt) => {
-                this.comando_sn()
+                if (this.comando_sn) { this.comando_sn() }
                 this.ocultar()
             })
             rodapeCxmsg.appendChild(btn_sim)
@@ -118,7 +120,7 @@ class Cxmsg {
 
     }
     static ocultar = () => {
-        this.divmsg.remove()
+        if (this.divmsg) { this.divmsg.remove() }
     }
 }
 export { Cxmsg }

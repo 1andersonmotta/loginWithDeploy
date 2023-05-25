@@ -4,7 +4,7 @@ import { Cxmsg } from "./cxmsg.js";
 const callback_ok = () => { }
 
 const callback_naook = () => {
-    const config = {
+    const config: any = {
         cor: "#800",
         tipo: "ok",
         textos: null,
