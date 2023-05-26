@@ -1,4 +1,7 @@
 # loginWithDeploy
+Sistema de Login Simples com validação de CNPJ, PASSWORD etc...
+Aplicação em NODEJS e Deploy no Redux
+Banco Postgres com Docker 
 O serviço esta hospedado e permanecerá ativo por ate 01/08/2023
 
 Para conseguir testar a aplicação sera nescessário utilizar o insomnia ou postman
