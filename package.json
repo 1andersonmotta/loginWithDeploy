@@ -7,7 +7,7 @@
     "node": "18"
   },
   "scripts": {
-    "dev": "tsx src/server.ts",
+    "dev": "nodemon --exec tsx src/server.ts",
     "build": "tsup src",
     "start": "node dist/server.js"
   },
@@ -24,6 +24,7 @@
   "dependencies": {
     "@prisma/client": "^4.14.1",
     "fastify": "^4.17.0",
+    "nodemon": "^2.0.22",
     "zod": "^3.21.4",
     "zoid": "^9.0.86"
   }

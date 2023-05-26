@@ -17,14 +17,14 @@ model User {
   razaoSocial       String
   tipo              String
   nomeFantasia      String
-  CNPJ              String
+  CNPJ              String   @unique()
   endereco          String
   bairro            String
   numero            String
   complemento       String
   CEP               String
   telefone          String
-  email             String
+  email             String   @unique()
   incricaoEstadual  String
   incricaoMunicipal String
   createAt          DateTime @default(now())
