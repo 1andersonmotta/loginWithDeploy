@@ -18,9 +18,13 @@ app.get('/users', async () => {
 app.post('/users/login/:params', async (request, reply) => {
     const param: any = request.params
     const data = param.params
+    console.log(data);
+
     const { password } = request.body as any
     const email = await prisma.user.findFirst({ where: { email: data, password: password } })
     const cnpj = await prisma.user.findFirst({ where: { CNPJ: data, password: password } })
+    console.log(cnpj);
+
     if (email || cnpj) {
         return reply.status(201).send('Usuário Logado')
     }
